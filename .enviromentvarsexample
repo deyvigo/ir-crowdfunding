@@ -1,0 +1,6 @@
+#crear archivo con nombre .enviromentvars
+#debe contener lo siguiente
+DATABASE_NAME=ir_crowdfunding
+DATABASE_USER=
+DATABASE_PASSWORD=
+DATABASE_HOST=localhost
