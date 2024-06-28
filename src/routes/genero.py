@@ -1,5 +1,5 @@
 from flask import Blueprint
-from controllers.genero import GeneroController
+from controllers import GeneroController
 
 genero_blueprint = Blueprint("genero", __name__)
 

@@ -1,5 +1,5 @@
 from flask import Blueprint
-from controllers.inversor import InversorController
+from controllers import InversorController
 
 inversor_blueprint = Blueprint("inversor", __name__)
 

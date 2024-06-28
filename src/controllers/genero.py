@@ -1,5 +1,5 @@
 from flask import request
-from models.genero import GeneroModel
+from models import GeneroModel
 
 class GeneroController:
   @staticmethod

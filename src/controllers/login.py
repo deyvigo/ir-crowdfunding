@@ -1,4 +1,4 @@
-from models.inversor import InversorModel
+from models import InversorModel
 from flask import request
 from flask_bcrypt import Bcrypt
 from flask_jwt_extended import create_access_token

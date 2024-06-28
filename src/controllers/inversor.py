@@ -1,5 +1,5 @@
 from flask import request
-from models.inversor import InversorModel
+from models import InversorModel
 from flask_bcrypt import Bcrypt
 
 bcrypt = Bcrypt()
