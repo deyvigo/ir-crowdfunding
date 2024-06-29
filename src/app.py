@@ -2,7 +2,7 @@ from flask import Flask, request
 from flask_cors import CORS
 from flask_bcrypt import Bcrypt
 from flask_jwt_extended import JWTManager
-from routes import category_blueprint, user_blueprint, login_blueprint, voice_blueprint, money_blueprint, project_blueprint
+from routes import category_blueprint, user_blueprint, login_blueprint, voice_blueprint, money_blueprint, project_blueprint, user_project_blueprint
 
 app = Flask(__name__)
 
@@ -25,6 +25,7 @@ app.register_blueprint(login_blueprint)
 app.register_blueprint(voice_blueprint)
 app.register_blueprint(money_blueprint)
 app.register_blueprint(project_blueprint)
+app.register_blueprint(user_project_blueprint)
 
 @app.route("/helloworld", methods=["GET"])
 def hello_world():

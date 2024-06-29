@@ -1,0 +1,21 @@
+meta {
+  name: unlike a project
+  type: http
+  seq: 15
+}
+
+delete {
+  url: {{BACKEND_URL}}//user/unlike/project
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcxOTY5MTE3MCwianRpIjoiNDgzYjk4OGYtZmVmZC00ZDcxLWEwZDAtZDM0NDZmNzczZGE3IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6eyJ1c2VybmFtZSI6ImRleXZpZ28iLCJpZF91c2VyIjoxfSwibmJmIjoxNzE5NjkxMTcwLCJjc3JmIjoiZTU4NGZhODUtNGMwMC00MWJjLWE0ZmYtYWMwZWI5ZmVkZjIxIiwiZXhwIjoxNzE5NjkyMDcwfQ.Xzo6BsBsoDInPUFgX6yWvz5s253KDU2oqHNfY1dwA0I
+}
+
+body:json {
+  {
+    "id_project": 1
+  }
+}

@@ -49,11 +49,7 @@ class UserController:
     response = UserModel().get_by_username(username)[0]["data"]
 
     id_user = response["id_user"]
-
-    print(id_user)
-
     categories = UserCategoryModel().get_by_id_user(id_user)[0]["data"]
-
     response["categories"] = categories
-
+    
     return response
