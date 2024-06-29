@@ -26,69 +26,94 @@ class Database:
     try:
       cursor = db.cursor()
       cursor.execute("""
-        create table if not exists genero
-        (
-          id_genero     int auto_increment
-            primary key,
-          nombre_genero varchar(100) not null
-        );
+        create table category
+(
+    id_category int auto_increment
+        primary key,
+    name        varchar(100) not null
+);
       """)
       cursor.execute("""
-        create table if not exists inversor
-        (
-          id_inversor int auto_increment
-            primary key,
-          name        varchar(200) not null,
-          username    varchar(20)  not null,
-          last_name   varchar(200) not null,
-          password    varchar(80)  not null,
-          preferencia varchar(100) not null,
-          linkedin    varchar(300) not null
-        );
+        create table project
+(
+    id_project    int auto_increment
+        primary key,
+    goal          int          not null,
+    title         varchar(300) not null,
+    description   text         not null,
+    current_money int          not null,
+    instagram     varchar(200) null,
+    facebook      varchar(200) null,
+    phone         varchar(15)  null
+);
       """)
       cursor.execute("""
-        create table if not exists solicitante
-        (
-          id_solicitante int auto_increment
-            primary key,
-          name           varchar(200) not null,
-          last_name      varchar(200) not null,
-          password       varchar(80)  not null,
-          phone          varchar(12)  not null,
-          username       varchar(20)  not null,
-          paypal         varchar(100) not null,
-          linkedin       varchar(300) not null
-        );
+        create table user
+(
+    id_user    int auto_increment
+        primary key,
+    username   varchar(40)  not null,
+    password   varchar(80)  not null,
+    first_name varchar(200) not null,
+    last_name  varchar(200) not null,
+    biography  text         null,
+    created    date         not null,
+    birthday   date         not null,
+    paypal     varchar(300) null,
+    linkedin   varchar(300) null
+);
       """)
       cursor.execute("""
-        create table if not exists post
-        (
-          id_post        int auto_increment
-            primary key,
-          title          varchar(200) not null,
-          body           text         not null,
-          goal           int          not null,
-          url_img        varchar(300) null,
-          id_genero      int          not null,
-          id_solicitante int          not null,
-          constraint post_genero_id_genero_fk
-            foreign key (id_genero) references genero (id_genero),
-          constraint post_solicitante_id_solicitante_fk
-            foreign key (id_solicitante) references solicitante (id_solicitante)
-        );
+        create table comment
+(
+    id_comment int auto_increment
+        primary key,
+    comment    text not null,
+    id_project int  not null,
+    id_user    int  not null,
+    constraint comment_project_id_project_fk
+        foreign key (id_project) references project (id_project),
+    constraint comment_user_id_user_fk
+        foreign key (id_user) references user (id_user)
+);
+      """)
+     
+      cursor.execute("""
+        create table money
+(
+    id_register_money int auto_increment
+        primary key,
+    id_user           int not null,
+    quantity          int not null,
+    constraint money_user_id_user_fk
+        foreign key (id_user) references user (id_user)
+);
       """)
       cursor.execute("""
-        create table if not exists post_inversor
-        (
-          id_post_inversor int auto_increment
-            primary key,
-          id_inversor      int not null,
-          id_post          int not null,
-          constraint post_inversor_inversor_id_inversor_fk
-            foreign key (id_inversor) references inversor (id_inversor),
-          constraint post_inversor_post_id_post_fk
-            foreign key (id_post) references post (id_post)
-        );
+        create table user_category_likes
+(
+    id_user_category_likes int auto_increment
+        primary key,
+    id_category            int not null,
+    id_user                int not null,
+    constraint user_category_likes_category_id_category_fk
+        foreign key (id_category) references category (id_category),
+    constraint user_category_likes_user_id_user_fk
+        foreign key (id_user) references user (id_user)
+);
+      """)
+      cursor.execute("""
+        create table user_project_likes
+(
+    id_user_project_likes int auto_increment
+        primary key,
+    id_user               int not null,
+    id_projects           int not null,
+    constraint user_project_likes_project_id_project_fk
+        foreign key (id_projects) references project (id_project),
+    constraint user_project_likes_user_id_user_fk
+        foreign key (id_user) references user (id_user)
+);
       """)
     except Exception as e:
       print(f"Error durante la creación de las tablas {e}")

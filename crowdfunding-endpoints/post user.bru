@@ -1,0 +1,21 @@
+meta {
+  name: post user
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{BACKEND_URL}}/user/register
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "username": "gomezolivas",
+    "password": "123456",
+    "first_name": "Deyvi",
+    "last_name": "Gomez",
+    "birthday": "1998-12-06"
+  }
+}

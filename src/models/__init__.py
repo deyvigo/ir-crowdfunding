@@ -1,2 +1,2 @@
-from models.genero import *
-from models.inversor import *
+from .genero import *
+from .user import *

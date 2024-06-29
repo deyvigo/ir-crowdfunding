@@ -1,4 +1,4 @@
-from models import InversorModel
+from models import UserModel
 from flask import request
 from flask_bcrypt import Bcrypt
 from flask_jwt_extended import create_access_token
@@ -7,12 +7,12 @@ bcrypt = Bcrypt()
 
 class LoginController:
   @staticmethod
-  def login_inversor():
+  def login_user():
     username = request.json.get("username")
     password = request.json.get("password")
-    user_data = InversorModel().get_inversor_by_username(username)
+    user_data = UserModel().get_by_username(username)[0]
 
-    user = user_data.get("data")
+    user = user_data["data"]
     if (user):
       if (bcrypt.check_password_hash(user.get("password"), password)):
         acces_token = create_access_token(identity={
