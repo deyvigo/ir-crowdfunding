@@ -4,8 +4,18 @@ meta {
   seq: 9
 }
 
-get {
-  url: {{}}/money/buy
-  body: none
-  auth: none
+put {
+  url: {{BACKEND_URL}}/money/buy
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcxOTY4MDEwOCwianRpIjoiOWRhODIxODYtMjMyYS00ZjVmLWFkMjktYzg4ZmQyODkyNTY5IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6eyJ1c2VybmFtZSI6InluYXZhcnJvIiwiaWRfdXNlciI6Nn0sIm5iZiI6MTcxOTY4MDEwOCwiY3NyZiI6IjI5NzdkNmE5LWU0MTctNGVhNi1iYmJhLTMxMjczNzZkNjI2OCIsImV4cCI6MTcxOTY4MTAwOH0.mlhipXSFDfTjJuQ0ktSnFMu1mGNJ8iFIxY8SLfltVbM
+}
+
+body:json {
+  {
+    "quantity": 100
+  }
 }

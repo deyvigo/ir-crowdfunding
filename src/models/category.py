@@ -26,3 +26,13 @@ class CategoryModel:
       return { "data": data }, 200
     except:
       return { "error": "Error al consultar la tabla category" }, 500
+    
+  def get_by_id(self, id_category):
+    cursor = self.db.cursor()
+    try:
+      sql = "SELECT id_category, name FROM category WHERE id_category = %s;"
+      cursor.execute(sql, (id_category,))
+      response = cursor.fetchone()
+      return { "data": response }, 200
+    except Exception as e:
+      return { "error": "Error al consultar la tabla category" }, 500

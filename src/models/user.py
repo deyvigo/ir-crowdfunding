@@ -44,4 +44,14 @@ class UserModel:
       return { "last_row_id": cursor.lastrowid, "row_count": cursor.rowcount }, 200
     except Exception as e:
       return { "error": f"Error al actualizar tabla user: {str(e)}" }, 500
+    
+  def get_by_id(self, id_user):
+    cursor = self.db.cursor()
+    try:
+      sql = "SELECT id_user, first_name, last_name, biography, created, birthday, paypal, linkedin FROM user WHERE id_user = %s;"
+      cursor.execute(sql, (id_user,))
+      response = cursor.fetchone()
+      return { "data": response }, 200
+    except Exception as e:
+      return { "error": f"Error al actualizar tabla user: {str(e)}"}, 500
   
