@@ -16,4 +16,14 @@ class UserCategoryModel:
       self.db.commit()
       return { "last_row_id": cursor.lastrowid, "row_count": cursor.rowcount }, 200
     except Exception as e:
-      return { "error": f"Error al crear en la tabla user: {str(e)}" }, 500
+      return { "error": f"Error al crear en la tabla user_category_likes: {str(e)}" }, 500
+    
+  def get_by_id_user(self, id_user):
+    cursor = self.db.cursor()
+    try:
+      sql = "SELECT id_user_category_likes, id_user, id_category FROM user_category_likes WHERE id_user = %s;"
+      cursor.execute(sql, (id_user,))
+      response = cursor.fetchall()
+      return { "data": response }, 200
+    except Exception as e:
+      return { "error": f"Error al consultar en la tabla user_category_likes: {str(e)}" }, 500

@@ -1,5 +1,5 @@
 from flask import request
-from models import UserModel, MoneyModel
+from models import UserModel, MoneyModel, UserCategoryModel
 from flask_bcrypt import Bcrypt
 from flask_jwt_extended import jwt_required, get_jwt_identity
 
@@ -40,5 +40,20 @@ class UserController:
     linkedin = data["linkedin"]
 
     response = UserModel().update_rows(username, biography, paypal, linkedin)
+
+    return response
+  
+  @staticmethod
+  @jwt_required()
+  def get_user_by_username(username):
+    response = UserModel().get_by_username(username)[0]["data"]
+
+    id_user = response["id_user"]
+
+    print(id_user)
+
+    categories = UserCategoryModel().get_by_id_user(id_user)[0]["data"]
+
+    response["categories"] = categories
 
     return response

@@ -19,7 +19,7 @@ class UserModel:
       return { "error": f"Error al crear en la tabla user: {str(e)}" }, 500
   
   # Para iniciar sesion
-  def get_by_username(self, username):
+  def get_by_username_for_login(self, username):
     cursor = self.db.cursor()
     try:
       sql = "SELECT id_user, username, password FROM user WHERE username = %s"
@@ -50,6 +50,16 @@ class UserModel:
     try:
       sql = "SELECT id_user, first_name, last_name, biography, created, birthday, paypal, linkedin FROM user WHERE id_user = %s;"
       cursor.execute(sql, (id_user,))
+      response = cursor.fetchone()
+      return { "data": response }, 200
+    except Exception as e:
+      return { "error": f"Error al actualizar tabla user: {str(e)}"}, 500
+    
+  def get_by_username(self, username):
+    cursor = self.db.cursor()
+    try:
+      sql = "SELECT id_user, first_name, last_name, biography, created, birthday, paypal, linkedin FROM user WHERE username = %s;"
+      cursor.execute(sql, (username,))
       response = cursor.fetchone()
       return { "data": response }, 200
     except Exception as e:

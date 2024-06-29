@@ -5,7 +5,11 @@ meta {
 }
 
 get {
-  url: {{}}/get/project/id
+  url: {{BACKEND_URL}}/get/project/id/1
   body: none
-  auth: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcxOTY4NTU5NSwianRpIjoiOGNiNDY0MDAtODUyMy00ZjI4LWJiZWUtYjJiMTI4M2NhMmU4IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6eyJ1c2VybmFtZSI6ImRleXZpZ28iLCJpZF91c2VyIjoxfSwibmJmIjoxNzE5Njg1NTk1LCJjc3JmIjoiYmYxMTgxNGEtY2M2MC00MzJmLWFjOTktNTBlZGI3NmEzMjJhIiwiZXhwIjoxNzE5Njg2NDk1fQ.vp9oWj3VRusx_I6hfRsb7iuQg4mRc1UzIrpv0fdhYJc
 }

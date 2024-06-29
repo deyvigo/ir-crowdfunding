@@ -10,7 +10,7 @@ class LoginController:
   def login_user():
     username = request.json.get("username")
     password = request.json.get("password")
-    user_data = UserModel().get_by_username(username)[0]
+    user_data = UserModel().get_by_username_for_login(username)[0]
 
     user = user_data["data"]
     if (user):
