@@ -1,5 +1,5 @@
 from flask import request
-from models import UserModel
+from models import UserModel, MoneyModel
 from flask_bcrypt import Bcrypt
 from flask_jwt_extended import jwt_required, get_jwt_identity
 
@@ -19,6 +19,8 @@ class UserController:
       return { "error": "el usuario ya existe" }, 409
     hashed_pass = bcrypt.generate_password_hash(password)
     response = UserModel().register(username, hashed_pass, first_name, last_name, birthday)
+    id_user_created = response[0]["last_row_id"]
+    money = MoneyModel().create(id_user_created)
     return response
   
   @staticmethod
