@@ -27,5 +27,21 @@ class UserModel:
       data = cursor.fetchone()
       return { "data": data }, 200
     except Exception as e:
-      return { "error": f"Error al crear en la tabla genero: {str(e)}" }, 500
+      return { "error": f"Error al consultar tabla user: {str(e)}" }, 500
+    
+  def update_rows(self, username, biography, paypal, linkedin):
+    cursor = self.db.cursor()
+    try:
+      sql = """
+      UPDATE user 
+        SET biography = %s,
+            paypal = %s,
+            linkedin = %s
+      WHERE username = %s;
+      """
+      cursor.execute(sql, (biography, paypal, linkedin, username))
+      self.db.commit()
+      return { "last_row_id": cursor.lastrowid, "row_count": cursor.rowcount }, 200
+    except Exception as e:
+      return { "error": f"Error al actualizar tabla user: {str(e)}" }, 500
   

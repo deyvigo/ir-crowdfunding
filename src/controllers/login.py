@@ -17,7 +17,7 @@ class LoginController:
       if (bcrypt.check_password_hash(user.get("password"), password)):
         acces_token = create_access_token(identity={
           "username": username,
-          "id_inversor": user.get("id_inversor")
+          "user": user["id_user"]
         })
         return { "token": acces_token }, 200
       else:

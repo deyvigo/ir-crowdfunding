@@ -10,3 +10,7 @@ def register_user():
 @user_blueprint.route("/user/add/category", methods=["POST"])
 def add_category_to_user():
   return UserCategoryController.add_category_to_user()
+
+@user_blueprint.route("/user/update/profile", methods=["PUT"])
+def update_profile():
+  return UserController.update_profile()
