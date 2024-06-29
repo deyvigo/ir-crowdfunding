@@ -1,2 +1,2 @@
-from .genero import *
+from .category import *
 from .user import *

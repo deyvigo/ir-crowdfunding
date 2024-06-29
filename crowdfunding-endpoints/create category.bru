@@ -1,0 +1,17 @@
+meta {
+  name: create category
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{BACKEND_URL}}/create/category
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "fundación"
+  }
+}

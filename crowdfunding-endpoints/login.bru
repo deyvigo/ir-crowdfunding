@@ -4,8 +4,15 @@ meta {
   seq: 4
 }
 
-get {
-  url: {{}}/login
-  body: none
+post {
+  url: {{BACKEND_URL}}/login
+  body: json
   auth: none
+}
+
+body:json {
+  {
+    "username": "deyvigo",
+    "password": "123456"
+  }
 }
