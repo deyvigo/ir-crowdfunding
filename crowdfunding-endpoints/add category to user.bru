@@ -1,0 +1,26 @@
+meta {
+  name: add category to user
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{BACKEND_URL}}/user/add/category
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "categories": [
+      {
+        "username": "gomezolivas",
+        "id_category": 1
+      },
+      {
+        "username": "gomezolivas",
+        "id_category": 2
+      }
+    ]
+  }
+}

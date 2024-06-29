@@ -22,9 +22,10 @@ class UserModel:
   def get_by_username(self, username):
     cursor = self.db.cursor()
     try:
-      sql = "SELECT username, password FROM user WHERE username = %s"
+      sql = "SELECT id_user, username, password FROM user WHERE username = %s"
       cursor.execute(sql, (username,))
       data = cursor.fetchone()
       return { "data": data }, 200
     except Exception as e:
       return { "error": f"Error al crear en la tabla genero: {str(e)}" }, 500
+  
