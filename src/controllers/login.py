@@ -17,9 +17,13 @@ class LoginController:
       if (bcrypt.check_password_hash(user.get("password"), password)):
         acces_token = create_access_token(identity={
           "username": username,
-          "id_user": user["id_user"]
+          "id_user": user["id_user"],
         })
-        return { "token": acces_token }, 200
+        return {
+          "token": acces_token,
+          "name": user["first_name"] + " " + user["last_name"],
+          "id_user": user["id_user"],
+        }, 200
       else:
         return { "error": "Contraseña incorrecta" }, 401
     else:

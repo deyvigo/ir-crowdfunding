@@ -18,11 +18,11 @@ class MoneyController:
 
     money_regist = MoneyModel().get_by_id_user(id_user)[0]["data"]
     print(money_regist)
-    old_quantity = money_regist["quantity"]
+    # old_quantity = money_regist["quantity"]
     quantity_to_add = data["quantity"]
 
-    quantity = int(quantity_to_add) + int(old_quantity)
+    # quantity = int(quantity_to_add) + int(old_quantity)
 
-    response = MoneyModel().update_quantity(id_user, quantity)
+    response = MoneyModel().update_quantity(id_user, quantity_to_add)
 
     return response

@@ -1,0 +1,15 @@
+meta {
+  name: get profile
+  type: http
+  seq: 16
+}
+
+get {
+  url: {{BACKEND_URL}}/user/get/profile
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcxOTc3Mjk2MywianRpIjoiYTg3MDNhNTktOTA2Ni00ZDg2LWJmZGUtMmRmNjdkMTFmZjY5IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6eyJ1c2VybmFtZSI6ImRleXZpZ28iLCJpZF91c2VyIjoxfSwibmJmIjoxNzE5NzcyOTYzLCJjc3JmIjoiZDgyYjU2YjQtODUzYS00ZGU0LThhMjgtNDk5MmI4N2FlNmMzIiwiZXhwIjoxNzIwMzc3NzYzfQ.5ZqVfn0QA2L6cpXSLmvDMU5KDMp0eHsdLO3tUKPzrH8
+}

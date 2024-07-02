@@ -1,21 +1,15 @@
 meta {
-  name: like a post
+  name: get info for first login
   type: http
-  seq: 14
+  seq: 17
 }
 
-post {
-  url: {{BACKEND_URL}}/user/like/project
-  body: json
+get {
+  url: {{BACKEND_URL}}/user/first/login
+  body: none
   auth: bearer
 }
 
 auth:bearer {
   token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcxOTc4NTAyMiwianRpIjoiMmM0ZjZjNTEtYWMzZi00NTZmLWJmMjgtOGQzYjM0MWIzODg2IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6eyJ1c2VybmFtZSI6ImRleXZpZ28iLCJpZF91c2VyIjoxfSwibmJmIjoxNzE5Nzg1MDIyLCJjc3JmIjoiZTcxNmM1ZGUtYjRlMi00OGY4LThjMjUtNWQ3ZDk0Y2JhZWEyIiwiZXhwIjoxNzIwMzg5ODIyfQ.cv2mLRClgHDykn7x6D3-o2nyu1xqOGIGswmjAmOS1sw
-}
-
-body:json {
-  {
-    "id_project": 3
-  }
 }

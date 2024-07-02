@@ -37,3 +37,16 @@ class UserProjectsModel:
       return response
     except Exception as e:
       return { "error": f"Error al consultar en la tabla user_projects: {str(e)}" }, 500
+    
+  def is_liked(self, id_project, id_user):
+    cursor = self.db.cursor()
+    try:
+      sql = """
+      SELECT * FROM user_project_likes
+      WHERE id_user = %s AND id_projects = %s;
+      """
+      cursor.execute(sql, (id_user, id_project))
+      response = cursor.fetchone()
+      return response
+    except Exception as e:
+      return { "error": f"Error al consultar en la tabla user_projects: {str(e)}" }, 500

@@ -5,3 +5,5 @@ from routes.voice import voice_blueprint
 from .money import money_blueprint
 from .project import project_blueprint
 from .user_project_likes import user_project_blueprint
+from .searcher import search_blueprint
+from .comment import comment_blueprint

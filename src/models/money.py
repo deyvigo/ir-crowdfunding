@@ -22,7 +22,11 @@ class MoneyModel:
   def update_quantity(self, id_user, quantity):
     cursor = self.db.cursor()
     try:
-      sql = "UPDATE money SET quantity = %s WHERE id_user = %s;"
+      sql = """
+      UPDATE money
+      SET quantity = quantity + %s
+      WHERE id_user = %s;
+      """
       cursor.execute(sql, (quantity, id_user))
       self.db.commit()
       return { "last_row_id": cursor.lastrowid, "row_count": cursor.rowcount }, 200
@@ -38,4 +42,5 @@ class MoneyModel:
       return { "data": response }, 200
     except Exception as e:
       return { "error": f"Error al consultar en la tabla money: {str(e)}" }, 500
+
 

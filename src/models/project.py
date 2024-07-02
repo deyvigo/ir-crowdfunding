@@ -38,3 +38,43 @@ class ProjectModel:
     except Exception as e:
       return { "error": f"Error al consultar en la tabla project: {str(e)}" }, 500
     
+  def get_by_id_user(self, id_user):
+    cursor = self.db.cursor()
+    try:
+      sql = """
+      SELECT p.id_project, p.goal, p.title, p.instagram, p.facebook, p.description, COUNT(*) AS likes_count
+      FROM project p
+      JOIN user_project_likes up ON up.id_projects = p.id_project
+      WHERE p.id_user = %s
+      GROUP BY p.id_project, p.goal, p.title, p.instagram, p.facebook, p.description;
+      """
+      cursor.execute(sql, (id_user,))
+      response = cursor.fetchall()
+      return { "data": response }, 200
+    except Exception as e:
+      return { "error": f"Error al consultar la tabla project: {str(e)}" }
+    
+  def get_by_id_category(self, id_category):
+    cursor = self.db.cursor()
+    try:
+      sql = "SELECT * FROM project WHERE id_category = %s;"
+      cursor.execute(sql, (id_category,))
+      response = cursor.fetchall()
+      return { "data": response }, 200
+    except Exception as e:
+      return { "error": f"Error al consultar en la tabla project: {str(e)}" }, 500
+    
+  def update_current_money(self, id_project, amount):
+    cursor = self.db.cursor()
+    try:
+      sql = """
+      UPDATE project
+      SET current_money = current_money + %s
+      WHERE id_project = %s;
+      """
+      cursor.execute(sql, (amount, id_project))
+      self.db.commit()
+      return { "row_count": cursor.rowcount }, 200
+    except Exception as e:
+      return { "error": f"Error al actualizar en la tabla project: {str(e)}" }, 500
+    

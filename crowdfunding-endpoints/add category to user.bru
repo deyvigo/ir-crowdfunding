@@ -7,18 +7,20 @@ meta {
 post {
   url: {{BACKEND_URL}}/user/add/category
   body: json
-  auth: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcxOTc5MDUxNywianRpIjoiY2EyMDcyNTktZmQwOS00Y2VjLWIwOTUtYzkzMDNjN2JhNzkxIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6eyJ1c2VybmFtZSI6ImRleXZpZ28iLCJpZF91c2VyIjoxfSwibmJmIjoxNzE5NzkwNTE3LCJjc3JmIjoiNGU2NTY4ZTYtOThkYy00ZjNhLWFhMmMtYzY5YzA4YjA0ODdiIiwiZXhwIjoxNzIwMzk1MzE3fQ.CkX2Ph-XvzTHk3P1GpkZ_FKbRtonGEDfPxK7XVhVWL4
 }
 
 body:json {
   {
     "categories": [
       {
-        "username": "gomezolivas",
         "id_category": 1
       },
       {
-        "username": "gomezolivas",
         "id_category": 2
       }
     ]

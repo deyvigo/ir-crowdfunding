@@ -15,3 +15,7 @@ def get_all_projects():
 @project_blueprint.route("/get/project/id/<id_project>", methods=["GET"])
 def get_project_by_id(id_project):
   return ProjectController.get_project_by_id(id_project)
+
+@project_blueprint.route("/project/contribute", methods=["PUT"])
+def contribute_project():
+  return ProjectController.contribute_project()

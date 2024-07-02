@@ -1,0 +1,21 @@
+meta {
+  name: update profile linkedin with jwt
+  type: http
+  seq: 8
+}
+
+put {
+  url: {{BACKEND_URL}}/user/update/profile/linkedin
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcxOTkwODc0NCwianRpIjoiMGE5ZWFmNTgtNDFiNi00ZDM1LTk4ZWItMGU4NmMxNGZlMzZlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6eyJ1c2VybmFtZSI6ImRleXZpZ28iLCJpZF91c2VyIjoxfSwibmJmIjoxNzE5OTA4NzQ0LCJjc3JmIjoiMmEzMDdhZGEtYmI0Yi00OWU4LWE0NGQtMjE1YzJkYjZlMzRlIiwiZXhwIjoxNzIwNTEzNTQ0fQ.chMBzvuiJDGsYTIPVSVkvWpDxEkyKExJLQbs_d4sa-0
+}
+
+body:json {
+  {
+    "linkedin": "link/linkedin"
+  }
+}
