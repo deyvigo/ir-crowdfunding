@@ -65,6 +65,7 @@ class Database:
 (
     id_project    int auto_increment
         primary key,
+    img_project   varchar(255) null,
     goal          int          not null,
     title         varchar(300) not null,
     description   text         not null,

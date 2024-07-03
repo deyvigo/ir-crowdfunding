@@ -5,7 +5,18 @@ meta {
 }
 
 post {
-  url: {{}}/create/comment
-  body: none
-  auth: none
+  url: {{BACKEND_URL}}/create/comment
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcxOTk1NzI2MiwianRpIjoiMTYyYzNjN2EtODc0MC00ODU0LWI0NmQtMjJmMzJjZDFlYTkwIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6eyJ1c2VybmFtZSI6Inllc25hdiIsImlkX3VzZXIiOjJ9LCJuYmYiOjE3MTk5NTcyNjIsImNzcmYiOiIyYzNmNTI1Yy1hMjFmLTQyNjEtYWNkZi0yYjRkOWFmZjMxMzEiLCJleHAiOjE3MjA1NjIwNjJ9.o6wqLzB7fzlNxqZE3DLan26cotT-t4jFVkKLnc7k7Qk
+}
+
+body:json {
+  {
+    "id_project": 1,
+    "comment": "No, me robaron $50000 dólares"
+  }
 }

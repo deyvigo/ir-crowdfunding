@@ -50,3 +50,34 @@ class UserProjectsModel:
       return response
     except Exception as e:
       return { "error": f"Error al consultar en la tabla user_projects: {str(e)}" }, 500
+    
+  def get_categories_liked_by_user(self, id_user):
+    cursor = self.db.cursor()
+    try:
+      sql = """
+      SELECT c.name, c.id_category
+      FROM user_project_likes upl
+      JOIN project p ON upl.id_projects = p.id_project
+      JOIN category c ON p.id_category = c.id_category
+      WHERE upl.id_user = %s
+      GROUP BY c.name, c.id_category;
+      """
+      cursor.execute(sql, (id_user,))
+      response = cursor.fetchall()
+      return { "data": response }, 200
+    except Exception as e:
+      return { "error": f"Error al consultar en la tabla user_project_likes: {str(e)}" }, 500
+    
+  def likes_per_project(self, id_project):
+    cursor = self.db.cursor()
+    try:
+      sql = """
+      SELECT COALESCE(COUNT(id_user), 0) AS likes
+      FROM user_project_likes
+      WHERE id_projects = %s;
+      """
+      cursor.execute(sql, (id_project,))
+      response = cursor.fetchone()
+      return { "data": response }, 200
+    except Exception as e:
+      return { "error": f"Error al consultar en la tabla user_project_likes: {str(e)}" }, 500

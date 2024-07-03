@@ -1,33 +1,45 @@
-from flask import request
+from flask import request, current_app
 from flask_jwt_extended import jwt_required, get_jwt_identity
 
-from models import ProjectModel, UserModel, CategoryModel, MoneyModel, UserProjectsModel, CommentModel
+import random, os
+
+from models import ProjectModel, UserModel, CategoryModel, MoneyModel, UserProjectsModel, CommentModel, UserCategoryModel
 
 class ProjectController:
   @staticmethod
   @jwt_required()
   def create_project():
-    data = request.json
+    data = request.form
 
     required_fields = ["goal", "title", "description", "instagram", "facebook", "phone", "id_category"]
 
     missing_fields = [field for field in required_fields if field not in data]
 
     if missing_fields: 
+      print('missing_fields', missing_fields)
       return { "error": "no se han ingresado los datos necesarios" }, 400
     
-    goal = data["goal"]
+    if "img" not in request.files:
+      print('no se ha mandado ninguna imagen')
+      return { "error": "no se ha mandado ninguna imagen" }, 400
+    
+    goal = int(data["goal"])
     title = data["title"]
     description = data["description"]
     instagram = data["instagram"]
     facebook = data["facebook"]
     phone = data["phone"]
-    id_category = data["id_category"]
+    id_category = int(data["id_category"])
+    img = request.files["img"]
+
+    # file path with secure name that not repeats in folder
+    file_path = os.path.join(current_app.config["IMG_PROJECTS_FOLDER"], img.filename)
+    img.save(file_path)
     
     user = get_jwt_identity()
     id_user = user["id_user"]
 
-    response = ProjectModel().create(goal, title, description, instagram, facebook, phone, id_category, id_user)
+    response = ProjectModel().create(goal, title, description, instagram, facebook, phone, id_category, id_user, img.filename)
 
     return response
   
@@ -106,5 +118,40 @@ class ProjectController:
     project["current_money"] = project["current_money"] + amount
 
     return project, 200
+  
+  @staticmethod
+  @jwt_required()
+  def get_recommended_projects():
+    user = get_jwt_identity()
+    id_user = user["id_user"]
+    categories_liked = UserCategoryModel().get_by_id_user(id_user)[0]["data"]
+    if not categories_liked:
+      return { "error": "no se han encontrado categorias" }, 404
+    categories_from_projects = UserProjectsModel().get_categories_liked_by_user(id_user)[0]["data"]
+    
+    arr_categories = set()
+    for category in categories_from_projects:
+      arr_categories.add(category["id_category"])
+    for category in categories_liked:
+      arr_categories.add(category["id_category"])
+
+    projects_recomended = []
+
+    for id_cat in arr_categories:
+      partial_recommended = ProjectModel().get_by_id_category(id_cat)[0]["data"]
+      for project in partial_recommended:
+        if project not in projects_recomended:
+          projects_recomended.append(project)
+
+    # devolverlo en orden aleatorio
+    random.shuffle(projects_recomended)
+    
+    return projects_recomended, 200
+  
+  @staticmethod
+  @jwt_required()
+  def get_popular_projects():
+    response = ProjectModel().get_popular()
+    return response
 
 

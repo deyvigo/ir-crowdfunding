@@ -1,5 +1,5 @@
 from flask import request
-from models import UserModel, MoneyModel, UserCategoryModel, ProjectModel
+from models import UserModel, MoneyModel, UserCategoryModel, ProjectModel, UserProjectsModel
 from flask_bcrypt import Bcrypt
 from flask_jwt_extended import jwt_required, get_jwt_identity
 
@@ -72,6 +72,11 @@ class UserController:
 
     response = UserModel().get_all_info_by_id(id_user)
     projects = ProjectModel().get_by_id_user(id_user)[0]["data"]
+
+    for project in projects:
+      id_project = project["id_project"]
+      likes = UserProjectsModel().likes_per_project(id_project)[0]["data"]
+      project["likes_count"] = likes["likes"]
 
     data_response = response[0]["data"]
     data_response["projects"] = projects

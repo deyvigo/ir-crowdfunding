@@ -8,11 +8,11 @@ class ProjectModel:
     if self.db:
       self.db.close()
 
-  def create(self, goal, title, description, instagram, facebook, phone, id_category, id_user):
+  def create(self, goal, title, description, instagram, facebook, phone, id_category, id_user, img):
     cursor = self.db.cursor()
     try:
-      sql = "INSERT INTO project (goal, title, description, current_money, instagram, facebook, phone, id_category, id_user) VALUES (%s, %s, %s, 0, %s, %s, %s, %s, %s)"
-      cursor.execute(sql, (goal, title, description, instagram, facebook, phone, id_category, id_user))
+      sql = "INSERT INTO project (goal, title, description, current_money, instagram, facebook, phone, id_category, id_user, img_project) VALUES (%s, %s, %s, 0, %s, %s, %s, %s, %s, %s)"
+      cursor.execute(sql, (goal, title, description, instagram, facebook, phone, id_category, id_user, img))
       self.db.commit()
       return { "last_row_id": cursor.lastrowid, "row_count": cursor.rowcount }, 200
     except Exception as e:
@@ -42,11 +42,9 @@ class ProjectModel:
     cursor = self.db.cursor()
     try:
       sql = """
-      SELECT p.id_project, p.goal, p.title, p.instagram, p.facebook, p.description, COUNT(*) AS likes_count
+      SELECT p.id_project, p.goal, p.title, p.instagram, p.facebook, p.description
       FROM project p
-      JOIN user_project_likes up ON up.id_projects = p.id_project
       WHERE p.id_user = %s
-      GROUP BY p.id_project, p.goal, p.title, p.instagram, p.facebook, p.description;
       """
       cursor.execute(sql, (id_user,))
       response = cursor.fetchall()
@@ -77,4 +75,20 @@ class ProjectModel:
       return { "row_count": cursor.rowcount }, 200
     except Exception as e:
       return { "error": f"Error al actualizar en la tabla project: {str(e)}" }, 500
+    
+  def get_popular(self):
+    cursor = self.db.cursor()
+    try:
+      sql = """
+      SELECT upl.id_projects as id_project, p.title, COUNT(upl.id_user) AS likes_count
+      FROM user_project_likes upl
+      JOIN project p ON upl.id_projects = p.id_project
+      GROUP BY upl.id_projects, p.title
+      ORDER BY likes_count DESC;
+      """
+      cursor.execute(sql)
+      response = cursor.fetchall()
+      return { "data": response }, 200
+    except Exception as e:
+      return { "error": f"Error al consultar en la tabla project: {str(e)}" }, 500
     

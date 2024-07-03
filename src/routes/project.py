@@ -19,3 +19,11 @@ def get_project_by_id(id_project):
 @project_blueprint.route("/project/contribute", methods=["PUT"])
 def contribute_project():
   return ProjectController.contribute_project()
+
+@project_blueprint.route("/project/recommended", methods=["GET"])
+def get_recommended_projects():
+  return ProjectController.get_recommended_projects()
+
+@project_blueprint.route("/project/popular", methods=["GET"])
+def get_popular_projects():
+  return ProjectController.get_popular_projects()

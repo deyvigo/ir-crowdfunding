@@ -5,7 +5,18 @@ meta {
 }
 
 put {
-  url: {{}}/contribute/project
-  body: none
-  auth: none
+  url: {{BACKEND_URL}}/contribute/project
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcxOTk0NjM5MywianRpIjoiMzZmMTk4NTAtZjgzOC00MGIwLTlmNGQtMmM2OGM3NTBmOTA0IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6eyJ1c2VybmFtZSI6ImRleXZpZ28iLCJpZF91c2VyIjoxfSwibmJmIjoxNzE5OTQ2MzkzLCJjc3JmIjoiNjE4MjYxZGEtMGNhZS00YzA1LTkwNTctNTMyMWQ1NTNlYzRhIiwiZXhwIjoxNzIwNTUxMTkzfQ.pzreaScn84ZV5uCSGCE80Zb3rnwFnx3wnKY6UfZIOS4
+}
+
+body:json {
+  {
+    "id_project": 1,
+    "amount": 0
+  }
 }

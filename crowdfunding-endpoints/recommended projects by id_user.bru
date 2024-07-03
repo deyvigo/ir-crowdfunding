@@ -1,0 +1,15 @@
+meta {
+  name: recommended projects by id_user
+  type: http
+  seq: 21
+}
+
+get {
+  url: http://127.0.0.1:5000/user/get/profile{{BACKEND_URL}}/project/recommended
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcxOTk2MDI5NCwianRpIjoiMTY3YjVhMDUtZTY1NC00YWYyLWIzYjQtOTRlM2IzZmE0NmRhIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6eyJ1c2VybmFtZSI6ImRleXZpZ28iLCJpZF91c2VyIjoxfSwibmJmIjoxNzE5OTYwMjk0LCJjc3JmIjoiMWRiM2MzZWMtMDBkMC00Y2M0LTgzYmUtNmRkYzVmMzVmMmNhIiwiZXhwIjoxNzIwNTY1MDk0fQ.XaUDNyVGD7-t4gb_IzQd3Tf2rZmqCxV9U01Ot-SUHbc
+}
