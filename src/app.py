@@ -9,8 +9,8 @@ app = Flask(__name__)
 
 import os
 UPLOAD_FOLDER = 'upload_audios'
-IMG_PROJECTS_FOLDER = 'upload_image_projects'
-IMG_PROFILE_FOLDER = 'upload_image_profile'
+IMG_PROJECTS_FOLDER = 'upload_images_project'
+IMG_PROFILE_FOLDER = 'upload_images_profile'
 
 if not os.path.exists(UPLOAD_FOLDER):
   os.makedirs(UPLOAD_FOLDER)
