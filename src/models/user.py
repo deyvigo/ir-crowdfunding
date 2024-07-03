@@ -62,7 +62,7 @@ class UserModel:
   def get_by_id(self, id_user):
     cursor = self.db.cursor()
     try:
-      sql = "SELECT id_user, username, first_name, last_name, biography, created, birthday, paypal, linkedin FROM user WHERE id_user = %s;"
+      sql = "SELECT id_user, username, first_name, last_name, img_user, biography, created, birthday, paypal, linkedin FROM user WHERE id_user = %s;"
       cursor.execute(sql, (id_user,))
       response = cursor.fetchone()
       return { "data": response }, 200
@@ -73,7 +73,7 @@ class UserModel:
     cursor = self.db.cursor()
     try:
       sql = """
-      SELECT u.id_user, u.username, u.first_name, u.last_name, u.biography, u.created, u.birthday, u.paypal, u.linkedin, m.quantity
+      SELECT u.id_user, u.username, u.first_name, u.img_user, u.last_name, u.biography, u.created, u.birthday, u.paypal, u.linkedin, m.quantity
       FROM user u
       JOIN money m ON m.id_user = u.id_user
       WHERE u.id_user = %s;
@@ -87,10 +87,25 @@ class UserModel:
   def get_by_username(self, username):
     cursor = self.db.cursor()
     try:
-      sql = "SELECT id_user, first_name, last_name, biography, created, birthday, linkedin FROM user WHERE username = %s;"
+      sql = "SELECT id_user, first_name, last_name, img_user, biography, created, birthday, linkedin FROM user WHERE username = %s;"
       cursor.execute(sql, (username,))
       response = cursor.fetchone()
       return { "data": response }, 200
     except Exception as e:
       return { "error": f"Error al actualizar tabla user: {str(e)}"}, 500
+    
+  def update_img(self, id_user, img):
+    cursor = self.db.cursor()
+    try:
+      sql = """
+      UPDATE user
+        SET img_user = %s
+      WHERE id_user = %s;
+      """
+      cursor.execute(sql, (img, id_user))
+      self.db.commit()
+      return { "last_row_id": cursor.lastrowid, "row_count": cursor.rowcount }, 200
+    except Exception as e:
+      return { "error": f"Error al actualizar tabla user: {str(e)}" }, 500
+
   

@@ -1,8 +1,9 @@
-from flask import Flask, request, send_from_directory, send_file
+from flask import Flask, send_file
 from flask_cors import CORS
 from flask_bcrypt import Bcrypt
 from flask_jwt_extended import JWTManager
 from datetime import timedelta
+
 from routes import category_blueprint, user_blueprint, login_blueprint, voice_blueprint, money_blueprint, project_blueprint, user_project_blueprint, search_blueprint, comment_blueprint
 
 app = Flask(__name__)
@@ -27,6 +28,7 @@ app.config["JWT_SECRET_KEY"] = "ir-crowdfunding"
 app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(days=7)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['IMG_PROJECTS_FOLDER'] = IMG_PROJECTS_FOLDER
+app.config['IMG_PROFILES_FOLDER'] = IMG_PROFILE_FOLDER
 
 jwt = JWTManager(app)
 bcrypt = Bcrypt(app)

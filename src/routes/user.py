@@ -19,6 +19,10 @@ def update_profile():
 def update_linkedin():
   return UserController.update_profile_linkedin()
 
+@user_blueprint.route("/user/update/profile/image", methods=["PUT"])
+def update_profile_image():
+  return UserController.update_profile_image()
+
 # check if is first login
 @user_blueprint.route("/user/first/login", methods=["GET"])
 def get_simple_profile_info():

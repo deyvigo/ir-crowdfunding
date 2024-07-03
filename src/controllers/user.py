@@ -1,7 +1,9 @@
-from flask import request
+from flask import request, current_app
 from models import UserModel, MoneyModel, UserCategoryModel, ProjectModel, UserProjectsModel
 from flask_bcrypt import Bcrypt
 from flask_jwt_extended import jwt_required, get_jwt_identity
+
+import os
 
 bcrypt = Bcrypt()
 
@@ -92,4 +94,22 @@ class UserController:
     response = UserCategoryModel().get_by_id_user(id_user)
 
     # return [] if is firts login
+    return response
+  
+  @staticmethod
+  @jwt_required()
+  def update_profile_image():
+    user = get_jwt_identity()
+    id_user = user["id_user"]
+
+    if "image" not in request.files:
+      print("no has ingresado ninguna imagen")
+      return { "error": "no has ingresado ninguna imagen" }, 400
+    
+    image = request.files["image"]
+
+    file_path = os.path.join(current_app.config['IMG_PROFILES_FOLDER'], image.filename)
+    image.save(file_path)
+
+    response = UserModel().update_img(id_user, image.filename)
     return response
