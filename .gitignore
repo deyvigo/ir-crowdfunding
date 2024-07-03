@@ -15,3 +15,7 @@ src/controllers/__pycache__/
 src/models/__pycache__/
 src/routes/__pycache__/
 src/utils/__pycache__/
+
+upload_audios/
+upload_image_profile/
+upload_image_projects/

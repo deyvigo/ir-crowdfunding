@@ -10,11 +10,16 @@ app = Flask(__name__)
 import os
 UPLOAD_FOLDER = 'upload_audios'
 IMG_PROJECTS_FOLDER = 'upload_image_projects'
+IMG_PROFILE_FOLDER = 'upload_image_profile'
+
 if not os.path.exists(UPLOAD_FOLDER):
   os.makedirs(UPLOAD_FOLDER)
 
 if not os.path.exists(IMG_PROJECTS_FOLDER):
   os.makedirs(IMG_PROJECTS_FOLDER)
+
+if not os.path.exists(IMG_PROFILE_FOLDER):
+  os.makedirs(IMG_PROFILE_FOLDER)
 
 CORS(app, origins=["http://localhost:5173", "http://localhost:5000"])
 
@@ -42,9 +47,12 @@ def hello_world():
 
 @app.route("/img/project/<filename>", methods=["GET"])
 def get_img_project(filename):
-  print(filename)
-  # retroceder un directorio
   path_file = os.path.join(os.path.dirname(__file__), "..", IMG_PROJECTS_FOLDER, filename)
+  return send_file(path_file)
+
+@app.route("/img/profile/<filename>", methods=["GET"])
+def get_img_profile(filename):
+  path_file = os.path.join(os.path.dirname(__file__), "..", IMG_PROFILE_FOLDER, filename)
   return send_file(path_file)
 
 if __name__ == "__main__":
