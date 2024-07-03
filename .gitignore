@@ -17,5 +17,5 @@ src/routes/__pycache__/
 src/utils/__pycache__/
 
 upload_audios/
-upload_image_profile/
-upload_image_projects/
+upload_images_profile/
+upload_images_project/
