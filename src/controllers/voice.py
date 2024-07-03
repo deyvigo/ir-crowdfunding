@@ -1,4 +1,8 @@
 from flask import request, current_app
+from openai import OpenAI
+from dotenv import load_dotenv
+
+load_dotenv(dotenv_path=".env")
 
 from pydub import AudioSegment
 import speech_recognition as sr
@@ -45,4 +49,44 @@ class VoiceController:
     base_dir = os.getcwd()
     file_path = os.path.join(current_app.config["UPLOAD_FOLDER"], "grabac.wav")
     transcription = VoiceController.transcribe_audio(file_path)
-    return { "transcription": transcription.lower() }
+
+    if transcription.lower() == 'no se pudo entender el audio':
+      return { "error": "no se pudo entender el audio" }, 400
+    
+    # openai api
+    api_key = os.getenv("OPENAI_API_KEY")
+
+    openai = OpenAI(api_key=api_key)
+
+    intial = """Eres un asistente de una paǵina web y tienes solo estas rutas a las que puedes acceder.
+    /main/buscar
+    /main/crear
+    /main/inicio
+    /main/recargar
+    /main/recomendados
+
+    /main/buscar es un buscador de proyectos, /main/crear en para crear un nuevo proyecto, /main/inicio es para editar perfil, /main/recargar es para comprar las monedas de la página, /main/recomendados, es para los proyectos recomendados.
+
+    Según lo siguiente: """
+
+    prompt = transcription
+
+    final = """Quiero que me mandes a una de las rutas. Solo respóndeme con un json de la siguiente forma { link: link }
+    En caso de que la ruta sea /main/crear quiero que mandes una respuesta de la siguiente forma { link: link, title: title, description: description, goal: goal}
+    goal es solo un número entero.
+    """
+
+    response = openai.chat.completions.create(
+      model="gpt-3.5-turbo",
+      messages=[
+        {"role": "user", "content": intial},
+        {"role": "user", "content": prompt},
+        {"role": "user", "content": final}
+      ],
+    )
+
+    print(response.choices[0].message.content)
+
+    relink = response.choices[0].message.content
+
+    return relink, 200
