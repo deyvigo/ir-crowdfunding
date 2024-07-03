@@ -1,0 +1,352 @@
+[
+  {
+    "username": "user1",
+    "password": "123456",
+    "first_name": "John",
+    "last_name": "Doe",
+    "birthdate": "1990-01-01"
+  },
+  {
+    "username": "user2",
+    "password": "123456",
+    "first_name": "Jane",
+    "last_name": "Smith",
+    "birthdate": "1995-05-10"
+  },
+  {
+    "username": "user3",
+    "password": "123456",
+    "first_name": "Michael",
+    "last_name": "Johnson",
+    "birthdate": "1988-11-20"
+  },
+  {
+    "username": "user4",
+    "password": "123456",
+    "first_name": "Emily",
+    "last_name": "Williams",
+    "birthdate": "1992-03-15"
+  },
+  {
+    "username": "user5",
+    "password": "123456",
+    "first_name": "Daniel",
+    "last_name": "Brown",
+    "birthdate": "1997-07-25"
+  },
+  {
+    "username": "user6",
+    "password": "123456",
+    "first_name": "Olivia",
+    "last_name": "Jones",
+    "birthdate": "1991-09-05"
+  },
+  {
+    "username": "user7",
+    "password": "123456",
+    "first_name": "David",
+    "last_name": "Taylor",
+    "birthdate": "1987-12-30"
+  },
+  {
+    "username": "user8",
+    "password": "123456",
+    "first_name": "Sophia",
+    "last_name": "Davis",
+    "birthdate": "1993-04-12"
+  },
+  {
+    "username": "user9",
+    "password": "123456",
+    "first_name": "James",
+    "last_name": "Miller",
+    "birthdate": "1996-06-20"
+  },
+  {
+    "username": "user10",
+    "password": "123456",
+    "first_name": "Emma",
+    "last_name": "Wilson",
+    "birthdate": "1994-02-18"
+  },
+  {
+    "username": "user11",
+    "password": "123456",
+    "first_name": "Benjamin",
+    "last_name": "Anderson",
+    "birthdate": "1989-08-08"
+  },
+  {
+    "username": "user12",
+    "password": "123456",
+    "first_name": "Ava",
+    "last_name": "Thomas",
+    "birthdate": "1998-10-30"
+  },
+  {
+    "username": "user13",
+    "password": "123456",
+    "first_name": "William",
+    "last_name": "Clark",
+    "birthdate": "1992-03-05"
+  },
+  {
+    "username": "user14",
+    "password": "123456",
+    "first_name": "Mia",
+    "last_name": "Lewis",
+    "birthdate": "1997-05-15"
+  },
+  {
+    "username": "user15",
+    "password": "123456",
+    "first_name": "Joseph",
+    "last_name": "Hall",
+    "birthdate": "1991-07-25"
+  },
+  {
+    "username": "user16",
+    "password": "123456",
+    "first_name": "Charlotte",
+    "last_name": "Young",
+    "birthdate": "1986-11-10"
+  },
+  {
+    "username": "user17",
+    "password": "123456",
+    "first_name": "Daniel",
+    "last_name": "Harris",
+    "birthdate": "1994-01-20"
+  },
+  {
+    "username": "user18",
+    "password": "123456",
+    "first_name": "Sophia",
+    "last_name": "King",
+    "birthdate": "1989-04-18"
+  },
+  {
+    "username": "user19",
+    "password": "123456",
+    "first_name": "Matthew",
+    "last_name": "Lee",
+    "birthdate": "1993-06-30"
+  },
+  {
+    "username": "user20",
+    "password": "123456",
+    "first_name": "Olivia",
+    "last_name": "Scott",
+    "birthdate": "1990-09-12"
+  },
+  {
+    "username": "user21",
+    "password": "123456",
+    "first_name": "Ethan",
+    "last_name": "Green",
+    "birthdate": "1996-02-28"
+  },
+  {
+    "username": "user22",
+    "password": "123456",
+    "first_name": "Chloe",
+    "last_name": "Adams",
+    "birthdate": "1998-04-08"
+  },
+  {
+    "username": "user23",
+    "password": "123456",
+    "first_name": "Alexander",
+    "last_name": "Baker",
+    "birthdate": "1991-06-20"
+  },
+  {
+    "username": "user24",
+    "password": "123456",
+    "first_name": "Ella",
+    "last_name": "Carter",
+    "birthdate": "1987-08-30"
+  },
+  {
+    "username": "user25",
+    "password": "123456",
+    "first_name": "Samuel",
+    "last_name": "Gonzalez",
+    "birthdate": "1995-01-10"
+  },
+  {
+    "username": "user26",
+    "password": "123456",
+    "first_name": "Grace",
+    "last_name": "Kelly",
+    "birthdate": "1999-03-22"
+  },
+  {
+    "username": "user27",
+    "password": "123456",
+    "first_name": "David",
+    "last_name": "Rivera",
+    "birthdate": "1992-05-05"
+  },
+  {
+    "username": "user28",
+    "password": "123456",
+    "first_name": "Lily",
+    "last_name": "Parker",
+    "birthdate": "1988-07-15"
+  },
+  {
+    "username": "user29",
+    "password": "123456",
+    "first_name": "Joseph",
+    "last_name": "Morris",
+    "birthdate": "1994-09-25"
+  },
+  {
+    "username": "user30",
+    "password": "123456",
+    "first_name": "Lucy",
+    "last_name": "Roberts",
+    "birthdate": "1997-11-05"
+  },
+  {
+    "username": "user31",
+    "password": "123456",
+    "first_name": "Andrew",
+    "last_name": "Cook",
+    "birthdate": "1991-01-15"
+  },
+  {
+    "username": "user32",
+    "password": "123456",
+    "first_name": "Madison",
+    "last_name": "Morgan",
+    "birthdate": "1986-03-30"
+  },
+  {
+    "username": "user33",
+    "password": "123456",
+    "first_name": "Joshua",
+    "last_name": "Murphy",
+    "birthdate": "1993-05-10"
+  },
+  {
+    "username": "user34",
+    "password": "123456",
+    "first_name": "Avery",
+    "last_name": "Bailey",
+    "birthdate": "1998-07-20"
+  },
+  {
+    "username": "user35",
+    "password": "123456",
+    "first_name": "Christopher",
+    "last_name": "Reed",
+    "birthdate": "1992-09-30"
+  },
+  {
+    "username": "user36",
+    "password": "123456",
+    "first_name": "Hannah",
+    "last_name": "Bell",
+    "birthdate": "1987-12-10"
+  },
+  {
+    "username": "user37",
+    "password": "123456",
+    "first_name": "Andrew",
+    "last_name": "Gomez",
+    "birthdate": "1996-02-20"
+  },
+  {
+    "username": "user38",
+    "password": "123456",
+    "first_name": "Mila",
+    "last_name": "Perry",
+    "birthdate": "1991-04-05"
+  },
+  {
+    "username": "user39",
+    "password": "123456",
+    "first_name": "Ryan",
+    "last_name": "Powell",
+    "birthdate": "1997-06-15"
+  },
+  {
+    "username": "user40",
+    "password": "123456",
+    "first_name": "Leah",
+    "last_name": "Long",
+    "birthdate": "1993-08-25"
+  },
+  {
+    "username": "user41",
+    "password": "123456",
+    "first_name": "Nathan",
+    "last_name": "Bennett",
+    "birthdate": "1988-11-05"
+  },
+  {
+    "username": "user42",
+    "password": "123456",
+    "first_name": "Sofia",
+    "last_name": "Reyes",
+    "birthdate": "1995-01-15"
+  },
+  {
+    "username": "user43",
+    "password": "123456",
+    "first_name": "Samuel",
+    "last_name": "Howard",
+    "birthdate": "1999-03-30"
+  },
+  {
+    "username": "user44",
+    "password": "123456",
+    "first_name": "Avery",
+    "last_name": "Foster",
+    "birthdate": "1992-06-10"
+  },
+  {
+    "username": "user45",
+    "password": "123456",
+    "first_name": "Elizabeth",
+    "last_name": "Price",
+    "birthdate": "1987-08-20"
+  },
+  {
+    "username": "user46",
+    "password": "123456",
+    "first_name": "Dylan",
+    "last_name": "Brooks",
+    "birthdate": "1994-10-01"
+  },
+  {
+    "username": "user47",
+    "password": "123456",
+    "first_name": "Victoria",
+    "last_name": "Hayes",
+    "birthdate": "1998-12-10"
+  },
+  {
+    "username": "user48",
+    "password": "123456",
+    "first_name": "Caleb",
+    "last_name": "Bryant",
+    "birthdate": "1991-02-18"
+  },
+  {
+    "username": "user49",
+    "password": "123456",
+    "first_name": "Penelope",
+    "last_name": "Russell",
+    "birthdate": "1986-04-30"
+  },
+  {
+    "username": "user50",
+    "password": "123456",
+    "first_name": "Gabriel",
+    "last_name": "Sullivan",
+    "birthdate": "1993-07-12"
+  }
+]

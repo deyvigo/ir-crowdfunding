@@ -24,7 +24,7 @@ if not os.path.exists(IMG_PROFILE_FOLDER):
 
 CORS(app, origins=["http://localhost:5173", "http://localhost:5000"])
 
-app.config["JWT_SECRET_KEY"] = "ir-crowdfunding"
+app.config["JWT_SECRET_KEY"] = "ir-crowdfunding" #TODO Change this! is only for testing
 app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(days=7)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['IMG_PROJECTS_FOLDER'] = IMG_PROJECTS_FOLDER

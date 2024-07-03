@@ -3,7 +3,7 @@ import pymysql.cursors
 from dotenv import load_dotenv
 import os
 
-load_dotenv(dotenv_path=".enviromentvars")
+load_dotenv(dotenv_path=".env")
 
 class Database:
   def __init__(self):
